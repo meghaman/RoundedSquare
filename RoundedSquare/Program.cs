@@ -23,7 +23,7 @@ namespace RoundedSquare
             {
                 get; set;
             }
-            public double Height
+            public double Length
             {
                 get; set;
             }
@@ -47,7 +47,7 @@ namespace RoundedSquare
             public void DrawRoundedRectangle(Graphics gfx, Pen DrawPen, Color FillColor)
             {
                 int strokeOffset = Convert.ToInt32(Math.Ceiling(DrawPen.Width));
-                Rectangle bounds = new Rectangle(0, 0, Convert.ToInt32(PixelToFeetRatio * Width) + SideMargin, Convert.ToInt32(PixelToFeetRatio * Height) + TopMargin);
+                Rectangle bounds = new Rectangle(0, 0, Convert.ToInt32(PixelToFeetRatio * Width) + SideMargin, Convert.ToInt32(PixelToFeetRatio * Length) + TopMargin);
                 bounds = Rectangle.Inflate(bounds, -strokeOffset, -strokeOffset);
 
                 GraphicsPath gfxPath = new GraphicsPath();
@@ -67,18 +67,24 @@ namespace RoundedSquare
 
             List<Blueprint> bluePrints = new List<Blueprint>()
             {
-                new Blueprint { Width = 2, Height = 7, FileName = "LobbyCloset", BackgroundColor = Color.FromArgb(140, 0, 0, 0) },
-                new Blueprint { Width = 17, Height = 7, FileName = "Lobby" },
-                new Blueprint { Width = 3, Height = 4, FileName = "LobbyHallway" },
-                new Blueprint { Width = 8, Height = 9, FileName = "Kitchen" },
-                new Blueprint { Width = 7, Height = 5, FileName = "Bathroom" },
-                new Blueprint { Width = 2, Height = 5, FileName = "Tub" },
-                new Blueprint { Width = 10, Height = 12.5, FileName = "LivingRoom" },
-                new Blueprint { Width = 9, Height = 11, FileName = "Bedroom" },
-                new Blueprint { Width = 3, Height = 5.5, FileName = "BedroomEntrance" },
-                new Blueprint { Width = 6, Height = 5.5, FileName = "Closet" },
-                new Blueprint { Width = 2, Height = 8, FileName = "Counter" },
-                new Blueprint { Width = 2, Height = 2, FileName = "Toilet" },
+                new Blueprint { Width = 2, Length = 7, FileName = "LobbyCloset", BackgroundColor = Color.FromArgb(140, 0, 0, 0) },
+                new Blueprint { Width = 17, Length = 7, FileName = "Lobby" },
+                new Blueprint { Width = 3, Length = 4, FileName = "LobbyHallway" },
+                new Blueprint { Width = 8, Length = 9, FileName = "Kitchen" },
+                new Blueprint { Width = 2, Length = 1.5, FileName = "KitchenSink" },
+                new Blueprint { Width = 2, Length = 4, FileName = "KitchenTable" },
+                new Blueprint { Width = 7, Length = 5, FileName = "Bathroom" },
+                new Blueprint { Width = 2, Length = 5, FileName = "Tub" },
+                new Blueprint { Width = 10, Length = 12.5, FileName = "LivingRoom" },
+                new Blueprint { Width = 2, Length = 4, FileName = "CoffeeTable" },
+                new Blueprint { Width = 9, Length = 11, FileName = "Bedroom" },
+                new Blueprint { Width = 3, Length = 5.5, FileName = "BedroomEntrance" },
+                new Blueprint { Width = 6, Length = 5.5, FileName = "Closet" },
+                new Blueprint { Width = 2, Length = 8, FileName = "Counter" },
+                new Blueprint { Width = 2, Length = 2, FileName = "Toilet" },
+                new Blueprint { Width = 2, Length = 1.5, FileName = "BathroomSink" },
+                new Blueprint { Width = 1.5, Length = 1.5, FileName = "Nighttable" },
+                new Blueprint { Width = 1, Length = 4, FileName = "TV" },
                 //new Blueprint { Width = 20.5, Height = 34, FileName = "DamageMeterBackground", BackgroundColor = Color.FromArgb(140, 0, 0, 0) }
             };
 
@@ -87,7 +93,7 @@ namespace RoundedSquare
 
             foreach (Blueprint bp in bluePrints)
             {
-                image = new Bitmap(Convert.ToInt32(PixelToFeetRatio * bp.Width) + bp.SideMargin, Convert.ToInt32(PixelToFeetRatio * bp.Height) + bp.TopMargin);
+                image = new Bitmap(Convert.ToInt32(PixelToFeetRatio * bp.Width) + bp.SideMargin, Convert.ToInt32(PixelToFeetRatio * bp.Length) + bp.TopMargin);
                 graphicsObject = Graphics.FromImage(image);
 
                 bp.DrawRoundedRectangle(graphicsObject, Pens.Black, bp.BackgroundColor);
