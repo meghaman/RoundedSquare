@@ -69,6 +69,7 @@ namespace RoundedSquare
             {
                 new Blueprint { Width = 2, Length = 7, FileName = "LobbyCloset", BackgroundColor = Color.FromArgb(140, 0, 0, 0) },
                 new Blueprint { Width = 17, Length = 7, FileName = "Lobby" },
+                new Blueprint { Width = 5, Length = 4, FileName = "Desk" },
                 new Blueprint { Width = 3, Length = 4, FileName = "LobbyHallway" },
                 new Blueprint { Width = 8, Length = 9, FileName = "Kitchen" },
                 new Blueprint { Width = 2, Length = 1.5, FileName = "KitchenSink" },
